@@ -17,6 +17,6 @@ public:
 	Mundo();
 	void objetos(char* archivo);
 	void objetosSinTextura(float x, float y, float z, float size);
-	void objetosTextura(float x, float y, float z, GLuint &textid);
+	void objetosTextura(float x, float y, float z, GLuint &texid);
 };
 

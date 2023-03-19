@@ -11,6 +11,7 @@
 #include <time.h>
 #include "glm.h"
 #include <FreeImage.h> //*** Para Textura: Incluir librería
+#include "Mundo.h"
 
 //-----------------------------------------------------------------------------
 
@@ -28,7 +29,11 @@ protected:
    GLMmodel* objmodel_ptr;
    GLMmodel* objmodel_ptr1; //*** Para Textura: variable para objeto texturizado
    GLuint texid; //*** Para Textura: variable que almacena el identificador de textura
-
+   Mundo* mesaOctogonal;
+   Mundo* alfombra;
+   Mundo* chimenea;
+   Mundo* sillas;
+   Mundo* sillaconNino;
 
 public:
 	myWindow(){}
@@ -76,26 +81,46 @@ public:
       glPushMatrix();
 	  //glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
 
+	  glTranslatef(0, 0, 2);
+	  
+
       if (shader) shader->begin();
 		  
+		  mesaOctogonal->objetosSinTextura(0.0f, -0.05f, 0.6f, 0.6);
 		  glPushMatrix();
+		  glRotatef(280, 0, 1, 0);
+		  chimenea->objetosSinTextura(-0.8f, 0.15f, -0.12f, 2.5);
+		  glPopMatrix();
+		  glPushMatrix();
+		  glRotatef(300, 0, 1, 0);
+		  sillaconNino->objetosSinTextura(0.45f, 0.0f, 0.0f, 1.0);
+		  glPopMatrix();
+		  glPushMatrix();
+		  glRotatef(170, 0, 1, 0);
+		  sillas->objetosSinTextura(0.3f, 0.0f, -0.08f, 0.9);
+		  glPopMatrix();
+
+
+	  /*glPushMatrix();
 		  glTranslatef(0.0f, 0.0f, 0.0f);
 		  glmDraw(objmodel_ptr, GLM_SMOOTH | GLM_MATERIAL);
 		  glPopMatrix();
-	      //glutSolidTeapot(1.0);
+	      //glutSolidTeapot(1.0);*/
       if (shader) shader->end();
 
 	  //*** Para Textura: llamado al shader para objetos texturizados
 	  if (shader1) shader1->begin();
 
-		  glPushMatrix();
+		  alfombra->objetosTextura(0.0f, -0.15f, 0.0f, texid);
+
+		  /*glPushMatrix();
 		  //glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
 		  glTranslatef(0.0f, -0.1f, 0.0f);
 		  glBindTexture(GL_TEXTURE_2D, texid);
 		  glmDraw(objmodel_ptr1, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
-		  glPopMatrix();
+		  glPopMatrix();*/
 	  //glutSolidTeapot(1.0);
-	  if (shader1) shader1->end();
+	  if (shader1) shader1->end(); 
 
 
       glutSwapBuffers();
@@ -112,6 +137,12 @@ public:
 	// is already available!
 	virtual void OnInit()
 	{
+		mesaOctogonal = new Mundo();
+		alfombra = new Mundo();
+		chimenea = new Mundo();
+		sillas = new Mundo();
+		sillaconNino = new Mundo();
+
 		glClearColor(0.5f, 0.5f, 1.0f, 0.0f);
 		glShadeModel(GL_SMOOTH);
 		glEnable(GL_DEPTH_TEST);
@@ -137,8 +168,14 @@ public:
       timer010 = 0.0f;
       bUp = true;
 
+	  mesaOctogonal->objetos("./Mallas/octogonal.obj");
+	  alfombra->objetos("./Mallas/alfombra.obj");
+	  chimenea->objetos("./Mallas/Chimenea.obj");
+	  sillas->objetos("./Mallas/Silla.obj");
+	  sillaconNino->objetos("./Mallas/ChinoSentado.obj");
+
 	  //Abrir mallas
-	  objmodel_ptr = NULL;
+	  /*objmodel_ptr = NULL;
 
 	  if (!objmodel_ptr)
 	  {
@@ -165,11 +202,11 @@ public:
 		  glmFacetNormals(objmodel_ptr1);
 		  glmVertexNormals(objmodel_ptr1, 90.0);
 	  }
- 
+ */
 	  //*** Para Textura: abrir archivo de textura
 	  initialize_textures();
       DemoLight();
-
+	  
 	}
 
 	virtual void OnResize(int w, int h)
