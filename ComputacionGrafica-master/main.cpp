@@ -29,11 +29,16 @@ protected:
    GLMmodel* objmodel_ptr;
    GLMmodel* objmodel_ptr1; //*** Para Textura: variable para objeto texturizado
    GLuint texid; //*** Para Textura: variable que almacena el identificador de textura
+   GLuint texid2; // Textura vela
    Mundo* mesaOctogonal;
    Mundo* alfombra;
    Mundo* chimenea;
    Mundo* sillas;
    Mundo* sillaconNino;
+   Mundo* vela;
+   Mundo* lampara;
+   Mundo* cajon;
+   Mundo* lampara2;
 
 public:
 	myWindow(){}
@@ -69,6 +74,31 @@ public:
 		FreeImage_Unload(pImage);
 		//
 		glEnable(GL_TEXTURE_2D);
+
+
+		//Textura velas
+		glGenTextures(1, &texid2);
+		glBindTexture(GL_TEXTURE_2D, texid2);
+		glTexEnvi(GL_TEXTURE_2D, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+		// Loading JPG file
+		FIBITMAP* bitmap2 = FreeImage_Load(
+			FreeImage_GetFileType("./Mallas/vela.jpg", 0),
+			"./Mallas/vela.jpg");  //*** Para Textura: esta es la ruta en donde se encuentra la textura
+
+		FIBITMAP* pImage2 = FreeImage_ConvertTo32Bits(bitmap2);
+		int nWidth2 = FreeImage_GetWidth(pImage2);
+		int nHeight2 = FreeImage_GetHeight(pImage2);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, nWidth2, nHeight2,
+			0, GL_BGRA, GL_UNSIGNED_BYTE, (void*)FreeImage_GetBits(pImage2));
+
+		FreeImage_Unload(pImage2);
+		//
+		glEnable(GL_TEXTURE_2D);
+
 	}
 
 
@@ -79,7 +109,7 @@ public:
       //timer010 = 0.09; //for screenshot!
 
       glPushMatrix();
-	  //glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
+	  glRotatef(timer010 * 30, 0.0, 1.0f, 0.0f);
 
 	  glTranslatef(0, 0, 2);
 	  
@@ -99,6 +129,20 @@ public:
 		  glRotatef(170, 0, 1, 0);
 		  sillas->objetosSinTextura(0.3f, 0.0f, -0.08f, 0.9);
 		  glPopMatrix();
+		  glPushMatrix();
+		  glRotatef(280, 0, 1, 0);
+		  //glColor3f(255, 0, 0);
+		  cajon->objetosSinTextura(-0.8f, 0.67f, -0.12f, 2.3);
+		  glPopMatrix();
+		  glPushMatrix();
+		  glRotatef(300, 0, 1, 0);
+		  lampara->objetosSinTextura(-0.9f, 0.5f, 0.5f, 2);
+		  glPopMatrix();
+		  glPushMatrix();
+		  glRotatef(-300, 0, 1, 0);
+		  lampara2->objetosSinTextura(0.9f, 0.5f, 0.5f, 2);
+		  glPopMatrix();
+		  
 
 
 	  /*glPushMatrix();
@@ -112,6 +156,10 @@ public:
 	  if (shader1) shader1->begin();
 
 		  alfombra->objetosTextura(0.0f, -0.15f, 0.0f, texid);
+		  glPushMatrix();
+		  glRotatef(0, 0, 0, 0);
+		  vela->objetosTextura(0.0f, 0.03f, 0.6f, texid2);
+		  glPopMatrix();
 
 		  /*glPushMatrix();
 		  //glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
@@ -142,6 +190,10 @@ public:
 		chimenea = new Mundo();
 		sillas = new Mundo();
 		sillaconNino = new Mundo();
+		vela = new Mundo();
+		cajon = new Mundo();
+		lampara = new Mundo();
+		lampara2 = new Mundo();
 
 		glClearColor(0.5f, 0.5f, 1.0f, 0.0f);
 		glShadeModel(GL_SMOOTH);
@@ -173,6 +225,10 @@ public:
 	  chimenea->objetos("./Mallas/Chimenea.obj");
 	  sillas->objetos("./Mallas/Silla.obj");
 	  sillaconNino->objetos("./Mallas/ChinoSentado.obj");
+	  vela->objetos("./Mallas/Vela.obj");
+	  cajon->objetos("./Mallas/Cajon.obj");
+	  lampara->objetos("./Mallas/Luz.obj");
+	  lampara2->objetos("./Mallas/Luz.obj");
 
 	  //Abrir mallas
 	  /*objmodel_ptr = NULL;
@@ -205,7 +261,7 @@ public:
  */
 	  //*** Para Textura: abrir archivo de textura
 	  initialize_textures();
-      DemoLight();
+      //DemoLight();
 	  
 	}
 
@@ -227,8 +283,8 @@ public:
 			       0.0f,1.0f,0.0f);
    }
 	virtual void OnClose(void){}
-	virtual void OnMouseDown(int button, int x, int y) {}    
-	virtual void OnMouseUp(int button, int x, int y) {}
+	virtual void OnMouseDown(int button, int x, int y){}    
+	virtual void OnMouseUp(int button, int x, int y){}
 	virtual void OnMouseWheel(int nWheelNumber, int nDirection, int x, int y){}
 
 	virtual void OnKeyDown(int nKey, char cAscii)
