@@ -1,2 +1,3 @@
 C:\Users\usuario\Downloads\GLSL_Lighting\Debug\TemplateProject.exe
 D:\Computacion Grafica\Grafica\Grafica\Debug\TemplateProject.exe
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\Debug\TemplateProject.exe

@@ -1,0 +1,12 @@
+# Blender 3.4.1 MTL File: 'Tarea.blend'
+# www.blender.org
+
+newmtl Tapete_material
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ks C:/tapete_tear_plus_cru_1__1_spec.jpg

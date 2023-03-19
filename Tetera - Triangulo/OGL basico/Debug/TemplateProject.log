@@ -1,4 +1,58 @@
 ﻿cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+  Triangulo.cpp
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\Triangulo.cpp(10,29): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
   main.cpp
-D:\Computacion Grafica\Grafica\Grafica\main.cpp(62,1): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
-  TemplateProject.vcxproj -> D:\Computacion Grafica\Grafica\Grafica\Debug\TemplateProject.exe
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\main.cpp(62,1): warning C4305: 'argumento': truncamiento de 'double' a 'GLfloat'
+  glWindow.cpp
+  glutwindow.cpp
+  glsl.cpp
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\cwc\source\glsl.cpp(1351,22): warning C4244: 'inicializando': conversión de 'std::streamoff' a 'unsigned long'; posible pérdida de datos
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\cwc\source\glsl.cpp(1353,23): warning C4244: 'inicializando': conversión de 'std::streamoff' a 'unsigned long'; posible pérdida de datos
+  glApplication.cpp
+  Generando código...
+cl : línea de comandos  warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+  glew.c
+  freeglut_window.c
+  fgSetupPixelFormat(): there is still some work to do here!
+  freeglut_videoresize.c
+  freeglut_teapot.c
+  freeglut_structure.c
+  freeglut_stroke_roman.c
+  freeglut_stroke_mono_roman.c
+  freeglut_state.c
+  freeglut_overlay.c
+  freeglut_misc.c
+  freeglut_menu.c
+  freeglut_main.c
+  freeglut_joystick.c
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_joystick.c(1000,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_joystick.c(1012,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_joystick.c(1020,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_joystick.c(1249,13): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  freeglut_init.c
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_init.c(520,27): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_init.c(524,13): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_init.c(533,19): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_init.c(713,13): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_init.c(883,17): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  freeglut_glutfont_definitions.c
+  freeglut_geometry.c
+  freeglut_gamemode.c
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(393,9): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(395,13): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(396,17): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(397,21): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(398,25): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(399,29): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\Computacion Grafica\Tetera - Triangulo\OGL basico\freeglut\source\freeglut_gamemode.c(400,33): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  freeglut_font_data.c
+  freeglut_font.c
+  freeglut_ext.c
+  Generando código...
+  Compilando...
+  freeglut_display.c
+  freeglut_cursor.c
+  freeglut_callbacks.c
+  Generando código...
+glApplication.obj : warning LNK4075: se omite '/EDITANDCONTINUE' debido a la especificación '/SAFESEH'
+  TemplateProject.vcxproj -> D:\Computacion Grafica\Tetera - Triangulo\OGL basico\Debug\TemplateProject.exe
