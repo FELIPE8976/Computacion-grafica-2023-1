@@ -2,6 +2,12 @@
 // Sample Application: Lighting (Per Fragment Phong)
 //=============================================================================
 
+
+// Entrega: Finalización OGL
+// Integrantes: Carlos Camacho - Laura Rojas - Luis Martínez
+
+
+
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include "glApplication.h"
@@ -29,7 +35,8 @@ protected:
    GLMmodel* objmodel_ptr;
    GLMmodel* objmodel_ptr1; //*** Para Textura: variable para objeto texturizado
    GLuint texid; //*** Para Textura: variable que almacena el identificador de textura
-   GLuint texid2; // Textura vela
+   GLuint texid2; // Variable que almacena el identificador de la textura de las velas
+
    Mundo* mesaOctogonal;
    Mundo* alfombra;
    Mundo* chimenea;
@@ -53,6 +60,8 @@ public:
 
 		//dib1 = loadImage("soccer_ball_diffuse.jpg"); //FreeImage
 
+		
+		// Textura de la alfombra
 		glGenTextures(1, &texid);
 		glBindTexture(GL_TEXTURE_2D, texid);
 		glTexEnvi(GL_TEXTURE_2D, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -76,7 +85,7 @@ public:
 		glEnable(GL_TEXTURE_2D);
 
 
-		//Textura velas
+		// Textura de las velas
 		glGenTextures(1, &texid2);
 		glBindTexture(GL_TEXTURE_2D, texid2);
 		glTexEnvi(GL_TEXTURE_2D, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -109,13 +118,16 @@ public:
       //timer010 = 0.09; //for screenshot!
 
       glPushMatrix();
-	  glRotatef(timer010 * 30, 0.0, 1.0f, 0.0f);
+	  glRotatef(timer010 * 30, 0.0, 1.0f, 0.0f);		//Rotación de la cámara
 
 	  glTranslatef(0, 0, 2);
 	  
 
       if (shader) shader->begin();
-		  
+
+		  // Este es el llamado para dibujar los objetos en la escena sin textura
+		  // Algunos objetos se rotaron para acomodarlos dentro de la escena
+
 		  mesaOctogonal->objetosSinTextura(0.0f, -0.05f, 0.6f, 0.6);
 		  glPushMatrix();
 		  glRotatef(280, 0, 1, 0);
@@ -131,7 +143,6 @@ public:
 		  glPopMatrix();
 		  glPushMatrix();
 		  glRotatef(280, 0, 1, 0);
-		  //glColor3f(255, 0, 0);
 		  cajon->objetosSinTextura(-0.8f, 0.67f, -0.12f, 2.3);
 		  glPopMatrix();
 		  glPushMatrix();
@@ -155,11 +166,13 @@ public:
 	  //*** Para Textura: llamado al shader para objetos texturizados
 	  if (shader1) shader1->begin();
 
+		  // Este es el llamado para dibujar los objetos con textura
+
 		  alfombra->objetosTextura(0.0f, -0.15f, 0.0f, texid);
 		  glPushMatrix();
-		  glRotatef(0, 0, 0, 0);
 		  vela->objetosTextura(0.0f, 0.03f, 0.6f, texid2);
 		  glPopMatrix();
+
 
 		  /*glPushMatrix();
 		  //glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
@@ -185,6 +198,8 @@ public:
 	// is already available!
 	virtual void OnInit()
 	{
+		// Inicialización de cada uno de los objetos a usar en el mundo
+
 		mesaOctogonal = new Mundo();
 		alfombra = new Mundo();
 		chimenea = new Mundo();
@@ -219,6 +234,8 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
+
+	  // Llamado de cada objeto con su respectivo archivo .obj
 
 	  mesaOctogonal->objetos("./Mallas/octogonal.obj");
 	  alfombra->objetos("./Mallas/alfombra.obj");
